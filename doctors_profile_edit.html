@@ -1,0 +1,94 @@
+{% load static %}
+{% include "doctor_header.html" %}
+
+  <!--================ Hero sm Banner start =================-->
+  <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Update Profile</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->
+
+
+
+  <!-- ================ contact section start ================= -->
+  <section class="section-margin--large">
+    <div class="container">
+      <div class="d-none d-sm-block mb-5 pb-4">
+
+                <div style="color:red">{{msg}}</div>
+
+        <form method="post" action="{% url 'update_doctors_profile' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-lg-5">
+                <div class="form-group">
+                  Id
+                <input type="text" class="form-control" placeholder="Id" name="id" value="{{doctors.id}}" readonly required>
+                </div>
+
+                <div class="form-group">
+                  Name
+                <input type="text" class="form-control" placeholder="Name" name="name" value="{{doctors.name}}" required>
+                </div>
+
+                <div class="form-group">
+                  Email
+                <input type="email" class="form-control" placeholder="Email" name="email" value="{{doctors.email}}" readonly required>
+              </div>
+
+                  <input type="hidden" class="form-control" placeholder="Password" name="password" value="{{doctors.password}}" readonly required>
+
+                <div class="form-group">
+                  Speciality
+                <input type="text" class="form-control" placeholder="Speciality" name="speciality" value="{{doctors.speciality}}" required>
+              </div>
+
+
+              <div class="form-group">
+                License Number
+                <input type="text" class="form-control" placeholder="License Number" name="license_number" value="{{doctors.license_number}}" required>
+              </div>
+
+
+              <div class="form-group">
+                Contact Number
+                <input type="number" class="form-control" placeholder="Contact Number" name="contact_number" value="{{doctors.contact_number}}" required>
+              </div>
+
+              <div class="form-group">
+                Address
+                <input type="text" class="form-control" placeholder="Address" name="address" value="{{doctors.address}}" required>
+              </div>
+
+
+              <div class="form-group">
+                Experience
+                <input type="number" class="form-control" placeholder="Experience" name="experience" value="{{doctors.experience}}" required>
+              </div>
+
+                <div class="form-group">
+                  image
+                <input type="file" class="form-control" placeholder="File" name="image" required>
+              </div>
+
+
+              <div class="form-group">
+                <button type="submit" value="Update" class="btn btn-primary py-3 px-5">Update</button>
+              </div>
+
+              </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+  </section>
+	<!-- ================ contact section end ================= -->
+{% include "footer.html" %}
+
+
+

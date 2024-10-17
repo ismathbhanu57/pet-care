@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pet Owners Communication Systems</title>
+	<link rel="icon" href="{% static 'img/Fevicon.png' %}" type="image/png">
+
+  <link rel="stylesheet" href="{% static 'vendors/bootstrap/bootstrap.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/themify-icons/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors}/owl-carousel/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/Magnific-Popup/magnific-popup.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <!--================ Header Top Area Start =================-->
+<!--  <section class="header-top d-none d-sm-block">-->
+<!--    <div class="container">-->
+<!--      <div class="d-sm-flex justify-content-between">-->
+<!--&lt;!&ndash;        <ul class="header-top__info mb-2 mb-sm-0">&ndash;&gt;-->
+<!--&lt;!&ndash;          <li><a href="tel:+01432152323"><span class="align-middle"><i class="ti-mobile"></i></span>+014 321 523 23</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;          <li><a href="mailto:info@example.com"><span class="align-middle"><i class="ti-email"></i></span>Info@example.com</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;        </ul>&ndash;&gt;-->
+<!--        <ul class="header-top__social">-->
+<!--          <li><a href="#"><i class="ti-facebook"></i></a></li>-->
+<!--          <li><a href="#"><i class="ti-twitter-alt"></i></a></li>-->
+<!--          <li><a href="#"><i class="ti-instagram"></i></a></li>-->
+<!--          <li><a href="#"><i class="ti-skype"></i></a></li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+  <!--================ Header Top Area end =================-->
+
+  <!--================ Header Menu Area start =================-->
+ <header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container box_1620">
+          <a class="navbar-brand"><h3><span>PET OWNERS COMMUNICATION SYSTEMS</span></h3> </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav justify-content-end">
+              <li class="nav-item active"><a class="nav-link" href="{% url 'customer_home' %}">Home</a></li>
+<!--              <li class="nav-item"><a class="nav-link" href="{% url 'my_profile' %}">Profile</a></li>-->
+              <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Pets
+                           </a>
+                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{% url 'add_pet' %}">Add Pets</a>
+                              <a class="dropdown-item" href="{% url 'my_pets' %}">My Pets</a>
+
+                               <a class="dropdown-item" href="{% url 'view_all_pets' %}">All Pets</a>
+                           </div>
+                        </li>
+<!--                <li class="nav-item"><a class="nav-link" href="{% url 'view_all_customers' %}">Customers</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="{% url 'view_friends_requests' %}">Friends Requests</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="{% url 'my_friends' %}">My Friends</a></li>-->
+<!--               <li class="nav-item"><a class="nav-link" href="{% url 'view_doctors' %}">Doctors</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="{% url 'my_appoitments' %}">My Appoitments</a></li>-->
+              <li class="nav-item"><a class="nav-link" href="{% url 'customers_view_notification' %}">Notifications</a></li>
+<!--              <li class="nav-item"><a class="nav-link" href="{% url 'customers_view_precautions' %}">View Precautions</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="{% url 'add_posts' %}">Add Posts</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="{% url 'my_posts' %}">My Posts</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="{% url 'view_posts' %}">All Posts</a></li>-->
+<!--              <li class="nav-item"><a class="nav-link" href="{% url 'change_password' %}">Change Password</a>-->
+<!--              <li class="nav-item"><a class="nav-link" href="{% url 'customer_logout' %}">Logout</a>-->
+<!--                <li class="nav-item dropdown">-->
+<!--                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
+<!--                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                              Pets-->
+<!--                           </a>-->
+<!--                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                              <a class="dropdown-item" href="{% url 'add_pet' %}">Add Pets</a>-->
+<!--                              <a class="dropdown-item" href="{% url 'my_pets' %}">My Pets</a>-->
+
+<!--                               <a class="dropdown-item" href="{% url 'view_all_pets' %}">All Pets</a>-->
+<!--                           </div>-->
+<!--                        </li>-->
+
+                 <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Customers
+                           </a>
+                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{% url 'view_all_customers' %}">Customers</a>
+                              <a class="dropdown-item" href="{% url 'view_friends_requests' %}">Friends Requests</a>
+
+                               <a class="dropdown-item" href="{% url 'my_friends' %}">My Friends</a>
+                           </div>
+                        </li>
+
+                <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Posts
+                           </a>
+                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{% url 'add_posts' %}">Add Posts</a>
+                              <a class="dropdown-item" href="{% url 'my_posts' %}">My Posts</a>
+
+                               <a class="dropdown-item" href="{% url 'view_posts' %}">All Posts</a>
+                           </div>
+                        </li>
+
+                <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Doctors
+                           </a>
+                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{% url 'view_doctors' %}">Doctors</a>
+                              <a class="dropdown-item" href="{% url 'my_appoitments' %}">My Appoitments</a>
+
+                               <a class="dropdown-item" href="{% url 'customers_view_precautions' %}">View Precautions</a>
+                           </div>
+                        </li>
+
+
+ <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Profile
+                           </a>
+                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{% url 'my_profile' %}">Profile</a>
+                              <a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a>
+
+                               <a class="dropdown-item" href="{% url 'customer_logout' %}">Logout</a>
+                           </div>
+                        </li>
+
+
+
+
+
+
+
+
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!--================Header Menu Area =================-->
+
+

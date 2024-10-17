@@ -1,0 +1,97 @@
+
+{% load static %}
+{% include "customer_header.html" %}
+
+    <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Customers</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+       <tr class="table-primary">
+           <th>Name</th>
+           <th>Email</th>
+           <th>Mobile</th>
+           <th>Address</th>
+           <th>Image</th>
+           <th>Add Friends</th>
+       </tr>
+    </thead>
+    <tbody>
+    {% for x in customers %}
+        <tr>
+            <td>{{x.name}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.mobile}}</td>
+            <td>{{x.address}}</td>
+            <td><img src="{{x.image.url}}" height="100px" width="100px"></td>
+            <td>
+                {% if x.email in friends_ids %}
+                    <!-- If the user is already a friend, show "Friends" button -->
+                    <button class="btn btn-success" disabled>Friends</button>
+                {% elif x.email in requested_ids %}
+                    <!-- If a friend request has been sent/received, show "Requested" button -->
+                    <button class="btn btn-secondary" disabled>Requested</button>
+                {% else %}
+                    <!-- Otherwise, show "Add Friends" button -->
+                    <a href="{% url 'add_friends_requests' x.id %}" class="btn btn-success add-friend-btn">Add Friends</a>
+                {% endif %}
+            </td>
+
+        </tr>
+    {% endfor %}
+
+    </tbody>
+
+
+
+
+
+</table>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.add-friend-btn').on('click', function(e) {
+            e.preventDefault();
+            var btn = $(this);
+            var url = btn.attr('href');
+
+            // Make an AJAX POST request to add the friend request
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    // Update the button to "Requested" upon success
+                    btn.replaceWith('<button class="btn btn-secondary" disabled>Requested</button>');
+                },
+                error: function(response) {
+                    alert(response.responseJSON.msg);
+                }
+            });
+        });
+    });
+</script>
+
+
+
+{% include "footer.html" %}
+
+
+
+
+

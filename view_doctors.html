@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% load static %}
+{% include "customer_header.html" %}
+
+   <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>View Doctor </h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+       <tr>
+           <th>Name</th>
+           <th>Speciality</th>
+           <th>License Number</th>
+           <th>Contact Number</th>
+           <th>Email</th>
+           <th>Address</th>
+           <th>Experience</th>
+           <th>Image</th>
+           <th>Book Appoitments</th>
+           <th>Add Reviews</th>
+       </tr>
+    </thead>
+
+    <tbody>
+    {% for x in doctors %}
+        <tr>
+            <td>{{x.name}}</td>
+            <td>{{x.speciality}}</td>
+            <td>{{x.license_number}}</td>
+            <td>{{x.contact_number}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.address}}</td>
+            <td>{{x.experience}}</td>
+            <td><img src="{{x.image.url}}" height="100px" width="100px"></td>
+
+            <td><a href="{% url 'add_appoitments' id=x.id %}">Book Appoitments</a></td>
+            <td><a href="{% url 'add_reviews' id=x.id %}">Add Reviews</a>&nbsp;&nbsp;/
+            <a href="{% url 'view_reviews' id=x.id %}">View Reviews</a>
+            </td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+
+
+
+
+
+</table>
+</div>
+<section class="section-margin">
+
+
+    <div class="container">
+      <div class="section-intro text-center pb-65px">
+      </div>
+      <div class="row">
+          {% for x in customer %}
+        <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 mb-xl-0">
+          <div class="card card-subject">
+            <div class="card-subject__img">
+              <img class='card-img rounded-0' src="{{x.image.url}}" alt="">
+              <div class="card-subject__imgOverlay">
+
+                <img src="{{x.image.url}}" alt="">
+                 
+              </div>
+            </div>
+            <div class="card-subject__body">
+              <p>{{x.name}}</p>
+              <p>{{x.speciality}}</p>
+              <p>{{x.license_number}}</p>
+              <p>{{x.contact_number}}</p>
+
+                <a href="{% url 'book_now' id=x.id %}" class="button button-contactForm">Book Now</a>
+                <a href="{% url 'add_quote' %}" class="button button-contactForm">Quote</a>
+                <a href="{% url 'add_review' %}" class="button button-contactForm">Review</a>
+
+
+
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+      </div>
+    </div>
+
+</section>
+
+
+
+
+
+
+{% include "footer.html" %}

@@ -1,0 +1,54 @@
+
+{% load static %}
+{% include "customer_header.html" %}
+
+    <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Profile</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+       <tr class="table-primary">
+           <th>Name</th>
+           <th>Email</th>
+           <th>Mobile</th>
+           <th>Address</th>
+           <th>Image</th>
+           <th>Edit</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{users.name}}</td>
+            <td>{{users.email}}</td>
+            <td>{{users.mobile}}</td>
+            <td>{{users.address}}</td>
+            <td><img src="{{users.image.url}}" height="100px" width="100px"></td>
+            <td><a href ="{% url 'my_profile_edit' %}"  style="color:red">Edit</a></td>
+
+        </tr>
+
+    </tbody>
+
+
+
+
+
+</table>
+</div>
+
+
+
+
+
+
+{% include "footer.html" %}
+

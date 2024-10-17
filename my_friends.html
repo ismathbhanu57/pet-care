@@ -1,0 +1,52 @@
+
+{% load static %}
+{% include "customer_header.html" %}
+
+    <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Requests</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+<div class="m-3">
+<table class="table table-bordered">
+    <thead>
+       <tr class="table-primary">
+           <th>Id</th>
+
+           <th>Email</th>
+       </tr>
+    </thead>
+    <tbody>
+    <!-- Friends added by you (where you are the sender) -->
+    {% for friend in sent_friends %}
+        <tr>
+            <td>{{ friend.id }}</td>
+            <td>{{ friend.to_email }}</td>
+        </tr>
+    {% endfor %}
+
+    <!-- Friends added you (where you are the receiver) -->
+    {% for friend in received_friends %}
+        <tr>
+            <td>{{ friend.id }}</td>
+            <td>{{ friend.from_email }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<br><br><br><br>
+
+
+
+
+{% include "footer.html" %}
+
+

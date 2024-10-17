@@ -1,0 +1,51 @@
+
+{% load static %}
+{% include "customer_header.html" %}
+<section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Pets Requests</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+       <tr class="table-primary">
+           <th>Id</th>
+           <th>Name</th>
+           <th>Email</th>
+           <th>mobile</th>
+           <th>address</th>
+<!--           <th>Reviews</th>-->
+       </tr>
+    </thead>
+
+    <tbody>
+    {% for x in requests %}
+
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.customer.name}}</td>
+            <td>{{x.customer.email}}</td>
+            <td>{{x.customer.mobile}}</td>
+            <td>{{x.customer.address}}</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+
+
+
+
+
+</table>
+</div>
+<br>
+{% include "footer.html" %}
+

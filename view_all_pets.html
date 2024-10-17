@@ -1,0 +1,123 @@
+
+{% load static %}
+{% include "customer_header.html" %}
+<section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>All Pets</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+
+<div class="m-3">
+<!--<table  class="table table-bordered">-->
+<!--    <thead>-->
+<!--       <tr class="table-primary">-->
+<!--           <th>Name</th>-->
+<!--           <th>Type</th>-->
+<!--           <th>Breed</th>-->
+<!--           <th>Age</th>-->
+<!--           <th>gender</th>-->
+<!--           <th>Weight</th>-->
+<!--           <th>Height</th>-->
+<!--           <th>Color</th>-->
+<!--           <th>Owner</th>-->
+<!--           <th>Description</th>-->
+<!--           <th>Image</th>-->
+<!--           <th>Interested</th>-->
+<!--       </tr>-->
+<!--    </thead>-->
+
+<!--    <tbody>-->
+<!--    {% for x in pets %}-->
+
+<!--        <tr>-->
+<!--            <td>{{x.name}}</td>-->
+<!--            <td>{{x.type}}</td>-->
+<!--            <td>{{x.breed}}</td>-->
+<!--            <td>{{x.age}}</td>-->
+<!--            <td>{{x.gender}}</td>-->
+<!--            <td>{{x.weight}}</td>-->
+<!--            <td>{{x.height}}</td>-->
+<!--            <td>{{x.color}}</td>-->
+<!--            <td>{{x.owner}}</td>-->
+<!--            <td>{{x.description}}</td>-->
+
+<!--            <td><img src="{{x.image.url}}" height="100px" width="100px"></td>-->
+<!--            <td>-->
+<!--    {% if x.sell_for == 'Yes' %}-->
+<!--        {% if x.id in interested_pet_ids %}-->
+<!--            <button disabled>Interested</button>-->
+<!--        {% else %}-->
+<!--            <a href="{% url 'express_interest' x.id %}">-->
+<!--                <button class="button button-contactForm">Interested</button>-->
+<!--            </a>-->
+<!--        {% endif %}-->
+<!--    {% endif %}-->
+<!--</td>-->
+<!--        </tr>-->
+<!--        {% endfor %}-->
+
+<!--    </tbody>-->
+
+
+
+
+
+<!--</table>-->
+</div>
+<br>
+<section class="section-margin">
+    <div class="container">
+        <div class="row">
+            {% for x in pets %}
+                <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                    <div class="card card-blog">
+                        <img class="card-img rounded-0" src="{{ x.image.url }}" alt="{{ x.name }}" style="height: 200px; width: 100%;">
+                        <div class="card-blog__body">
+                            <h3>{{ x.name }}</h3>
+                            <ul class="card-blog__info">
+                                <li><strong>Type:</strong> {{ x.type }}</li>
+                                <li><strong>Breed:</strong> {{ x.breed }}</li>
+                                <li><strong>Age:</strong> {{ x.age }} years</li>
+                                <li><strong>Gender:</strong> {{ x.gender }}</li>
+                                <li><strong>Weight:</strong> {{ x.weight }} kg</li>
+                                <li><strong>Height:</strong> {{ x.height }} cm</li>
+                                <li><strong>Color:</strong> {{ x.color }}</li>
+                                <li><strong>Owner:</strong> {{ x.owner }}</li>
+                            </ul>
+                            <p>{{ x.description }}</p>
+                        </div>
+                        <div class="card-blog__footer">
+                            <div>
+                                <!-- Likes Section -->
+                                <span>{{ x.like_count }} {{ x.like_count|pluralize:"Like,Likes" }}</span>
+                                {% if x.id in liked_pets %}
+                                    Liked
+                                {% else %}
+                                    <a href="{% url 'like_pets' x.id %}" style="color:red">Like</a>
+                                {% endif %}
+                            </div>
+
+                            <!-- Interested Section (Only if the pet is for sale) -->
+                            {% if x.sell_for == 'Yes' %}
+                                <div>
+                                    {% if x.id in interested_pet_ids %}
+                                        <button class="button button-contactForm" disabled>Interested</button>
+                                    {% else %}
+                                        <a href="{% url 'express_interest' x.id %}" class="button button-contactForm">Interested</a>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% include "footer.html" %}

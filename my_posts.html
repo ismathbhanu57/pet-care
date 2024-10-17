@@ -1,0 +1,56 @@
+
+{% load static %}
+{% include "customer_header.html" %}
+<section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>My Posts</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+       <tr class="table-primary">
+           <th>Id</th>
+
+           <th>Email</th>
+           <th>Title</th>
+           <th>Description</th>
+           <th>Posts For</th>
+           <th>Files</th>
+           <th>Date&Time</th>
+           <th>Edit</th>
+           <th>Delete</th>
+           <th>Likes</th>
+           <th>Comments</th>
+       </tr>
+    </thead>
+    <tbody>
+    {% for x in posts %}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.title}}</td>
+            <td>{{x.description}}</td>
+            <td>{{x.only_for}}</td>
+            <td><img src="{{x.pfile.url}}" height="100px" width="100px"></td>
+            <td>{{x.date_time}}</td>
+            <td><a href="{% url 'posts_edit' id=x.id %}" style="color:red">Edit</a></td>
+            <td><a href="{% url 'delete_posts' id=x.id %}" onclick="return confirm('Really Do You Want To Delete?')" style="color:red">Delete</a></td>
+            <td><a href="{% url 'view_posts_likes' id=x.id %}" style="color:red">Likes</a></td>
+            <td><a href="{% url 'view_posts_comments' id=x.id %}" style="color:red">Comments</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+<br>
+{% include "footer.html" %}
+
+

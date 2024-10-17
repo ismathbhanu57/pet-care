@@ -1,0 +1,36 @@
+{% load static %}
+{% include "doctor_header.html" %}
+
+<section class="hero-banner hero-banner--sm">
+  <div class="hero-banner__content text-center">
+    <h1>View Prescription</h1>
+    <nav aria-label="breadcrumb" class="banner-breadcrumb"></nav>
+  </div>
+</section>
+
+<div class="m-3">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Doctor Email</th>
+        <th>Customer Email</th>
+        <th>Pet ID</th>
+        <th>Prescription File</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for x in prescription %}
+        <tr>
+          <td>{{ x.doctor_email }}</td>
+          <td>{{ x.customer_email }}</td>
+          <td>{{ x.pet_id }}</td>
+          <td><a href="{{ x.prescription_file.url }}" target="_blank">View Prescription File</a></td>
+        </tr>
+      {% empty %}
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% include "footer.html" %}

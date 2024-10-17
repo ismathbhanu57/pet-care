@@ -1,0 +1,71 @@
+
+{% load static %}
+{% include "admin_header.html" %}
+
+    <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Customers</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+       <tr class="table-primary">
+           <th>Name</th>
+
+           <th>Email</th>
+           <th>Speciality</th>
+           <th>License Number</th>
+           <th>Contact Number</th>
+           <th>Address</th>
+           <th>Experience</th>
+           <th>Image</th>
+           <th>Status</th>
+       </tr>
+    </thead>
+    <tbody>
+    {% for x in doctors %}
+        <tr>
+            <td>{{x.name}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.speciality}}</td>
+            <td>{{x.license_number}}</td>
+            <td>{{x.contact_number}}</td>
+            <td>{{x.address}}</td>
+            <td>{{x.experience}}</td>
+            <td><img src="{{x.image.url}}" height="100px" width="100px"></td>
+            <td>{% if x.status == 'Pending' %}
+              <a href="{% url 'accept_doctors' id=x.id %}" class="btn btn-success" >Accept</a>
+              <a class="btn btn-danger" href="{% url 'reject_doctors' id=x.id %}">Reject</a>
+              {% elif x.status == 'Accepted' %}
+              <button class="btn btn-warning" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Accepted</button>
+              {% else %}
+              <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Rejected</button>
+              {% endif %}</td>
+
+        </tr>
+    {% endfor %}
+
+    </tbody>
+
+
+
+
+
+</table>
+</div>
+
+
+
+
+
+
+{% include "footer.html" %}
+
+

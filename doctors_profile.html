@@ -1,0 +1,60 @@
+
+{% load static %}
+{% include "doctor_header.html" %}
+
+    <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Profile Details</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+
+       <tr class="table-primary">
+           <th>Name</th>
+           <th>Speciality</th>
+           <th>License Number</th>
+           <th>Contact Number</th>
+           <th>Email</th>
+           <th>Address</th>
+           <th>Experience</th>
+           <th>Doctor Image</th>
+           <th>Edit</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{doctors.name}}</td>
+            <td>{{doctors.speciality}}</td>
+            <td>{{doctors.license_number}}</td>
+            <td>{{doctors.contact_number}}</td>
+            <td>{{doctors.email}}</td>
+            <td>{{doctors.address}}</td>
+            <td>{{doctors.experience}}</td>
+            <td><img src="{{doctors.image.url}}" alt="Doctor Image" style="width:100px;"></td>
+            <td><a href="{% url 'doctors_profile_edit' %}" style="color:red">Edit</a></td>
+
+
+        </tr>
+    </tbody>
+
+
+
+</table>
+</div>
+<br><br>
+
+
+
+
+
+{% include "footer.html" %}
+
+

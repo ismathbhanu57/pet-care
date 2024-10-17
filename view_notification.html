@@ -1,0 +1,41 @@
+
+{% load static %}
+{% include "admin_header.html" %}
+<section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Notifications</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+
+       <tr class="table-primary">
+           <th>Title</th>
+           <th>Description</th>
+           <th>Date&Time</th>
+           <th>Delete</th>
+       </tr>
+    </thead>
+    <tbody>
+    {% for x in notifications %}
+        <tr>
+            <td>{{x.title}}</td>
+            <td>{{x.description}}</td>
+            <td>{{x.ndate_time}}</td>
+            <td><a href="{% url 'delete_view_notification' id=x.id %}" onclick="return confirm('Really Do You Want To Delete?')" style="color:red">Delete</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+<br><br>
+{% include "footer.html" %}
+

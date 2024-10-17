@@ -1,0 +1,62 @@
+{% load static %}
+{% include "doctor_header.html" %}
+
+  <!--================ Hero sm Banner start =================-->
+  <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Quote</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->
+
+
+
+  <!-- ================ contact section start ================= -->
+  <section class="section-margin--large">
+    <div class="container">
+      <div class="d-none d-sm-block mb-5 pb-4">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-lg-5">
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="Title" value="{{x.title}}" name="title">
+                </div>
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="Description" value="{{x.description}}" name="description">
+                </div>
+                <div class="form-group">
+                <input type="email" class="form-control" placeholder="Doctor Email" value="{{x.email}}" name="doctor_email">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" placeholder="Customer Email" value="{{y.Email}}" name="customer_email">
+                </div>
+
+
+
+
+
+
+              <div class="form-group">
+                <input type="datetime-local" class="form-control" placeholder="Date&Time" value="{{x.date_time}}" name="date_time" required>
+              </div>
+
+
+                <div class="form-group text-center text-md-right mt-3">
+                   <button type="submit" class="button button-contactForm">Submit</button>
+               </div>
+              </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+  </section>
+	<!-- ================ contact section end ================= -->
+{% include "footer.html" %}
+
+
+

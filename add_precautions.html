@@ -1,0 +1,50 @@
+
+{% load static %}
+{% include "doctor_header.html" %}
+<section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Add Precautions</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+<section class="section-margin--large">
+    <div class="container">
+        <div class="col-md-8 col-lg-9">
+            <div style="color:red">{{msg}}</div>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-5">
+                         <div class="form-group">
+                            <input class="form-control" name="email" id="email" type="email" placeholder="Email" value="{{email}}" required readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" name="title" id="title" type="text" placeholder="Title">
+                        </div>
+
+                    <div class="form-group">
+                        <input class="form-control" name="description" id="description" type="text" placeholder="Description">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" name="pet" id="pet" type="text" placeholder="Pet">
+                    </div>
+
+                    <div class="form-group text-center text-md-left mt-3">
+
+                        <button type="submit" class="button button-contactForm">Add Precautions</button>
+                    </div>
+                </div>
+             </div>
+        </form>
+        </div>
+    </div>
+</section>
+
+{% include "footer.html" %}
+</body>
+</html>
+

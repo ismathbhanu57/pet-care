@@ -1,0 +1,42 @@
+
+{% load static %}
+{% include "customer_header.html" %}
+<section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>My Posts Comments</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+       <tr class="table-primary">
+           <th>Id</th>
+
+           <th>Email</th>
+           <th>Comments</th>
+          <th>Date&Time</th>
+       </tr>
+    </thead>
+    <tbody>
+    {% for x in comments %}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.customer_email}}</td>
+            <td>{{x.comments}}</td>
+            <td>{{x.date_time}}</td>
+            </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+<br>
+{% include "footer.html" %}
+
+

@@ -1,0 +1,118 @@
+
+
+{% load static %}
+{% include "customer_header.html" %}
+
+  <!--================ Hero sm Banner start =================-->
+  <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Update Pets</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->
+
+
+
+  <!-- ================ contact section start ================= -->
+  <section class="section-margin--large">
+    <div class="container">
+
+        <script src="{% static 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap' %}"></script>
+
+      </div>
+
+
+
+
+
+
+        <div class="col-md-8 col-lg-9">
+           <form method=post action="{% url 'pet_update' %}" enctype="multipart/form-data" >
+             {% csrf_token %}
+            <div class="row">
+              <div class="col-lg-5">
+              <div class="form-group">
+                Pets Id
+                <input type="number" class="form-control" placeholder="id" name="id" value="{{pets.id}}" readonly required>
+              </div>
+
+              <div class="form-group">
+                Name
+                <input type="text" class="form-control" placeholder="Name" name="name" value="{{pets.name}}" required>
+              </div>
+
+              <div class="form-group">
+                Email
+                <input type="email" class="form-control" placeholder="email" name="email" value="{{pets.email}}" readonly required>
+              </div>
+
+              <div class="form-group">
+                Type
+                <input type="text" class="form-control" placeholder="type" name="type" value="{{pets.type}}" required>
+              </div>
+
+              <div class="form-group">
+                Breed
+                <input type="text" class="form-control" placeholder="Breed" name="breed" value="{{pets.breed}}" required>
+              </div>
+
+              <div class="form-group">
+                Age
+                <input type="number" class="form-control" placeholder="Age" name="age" value="{{pets.age}}" required>
+              </div>
+
+              <div class="form-group">
+                Gender
+                <input type="text" class="form-control"  placeholder="Gender" name="gender" value="{{pets.gender}}" required>
+              </div>
+
+              <div class="form-group">
+                Weight
+                <input type="number" class="form-control"  placeholder="Weight" name="weight" value="{{pets.weight}}" required>
+              </div>
+
+              <div class="form-group">
+                Height
+                <input type="number" class="form-control"  placeholder="Height" name="height" value="{{pets.height}}" required>
+              </div>
+
+              <div class="form-group">
+                Color
+                <input type="text" class="form-control"  placeholder="Color" name="color" value="{{pets.color}}" required>
+              </div>
+
+              <div class="form-group">
+                Owner
+                <input type="text" class="form-control"  placeholder="Owner" name="owner" value="{{pets.owner}}" required>
+              </div>
+
+                 <div class="form-group">
+                   Description
+                <input type="text" class="form-control"  placeholder="Description" name="description" value="{{pets.description}}" required>
+              </div>
+
+              <div class="form-group">
+                Image
+                <input type="file" class="form-control"  placeholder="Image" name="image" value="{{pets.image}}" required>
+              </div>
+
+
+              <div class="form-group">
+                <button type="submit" value="Update" class="btn btn-primary py-3 px-5" >Update Pets</button>
+              </div>
+
+              </div>
+            </div>
+            </form>
+        </div>
+
+
+  </section>
+	<!-- ================ contact section end ================= -->
+{% include "footer.html" %}
+
+
+

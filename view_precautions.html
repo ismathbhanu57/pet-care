@@ -1,0 +1,64 @@
+
+{% load static %}
+{% include "doctor_header.html" %}
+<section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>View Precautions</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+
+                        <tr class="table-primary">
+           <th>Email</th>
+           <th>Title</th>
+           <th>Description</th>
+           <th>Pet</th>
+           <th>Date&Time</th>
+
+
+
+
+       </tr>
+    </thead>
+
+    <tbody>
+    {% for x in precautions %}
+        <tr>
+            <td>{{x.email}}</td>
+            <td>{{x.title}}</td>
+            <td>{{x.description}}</td>
+            <td>{{x.pet}}</td>
+            <td>{{x.date_time}}</td>
+
+
+
+
+
+        </tr>
+    {% endfor %}
+    </tbody>
+
+
+
+
+
+</table>
+</div>
+
+
+
+
+<br><br><br><br>
+
+
+{% include "footer.html" %}
+

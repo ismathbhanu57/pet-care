@@ -1,0 +1,57 @@
+
+{% load static %}
+{% include "customer_header.html" %}
+
+   <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Reviews </h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+
+       <tr class="table-primary">
+
+           <th>Id</th>
+           <th>Customer Email</th>
+           <th>Reviews</th>
+           <th>Ratings</th>
+           <th>Date&Time</th>
+
+       </tr>
+    </thead>
+
+    <tbody>
+    {% for x in reviews %}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.customer_email}}</td>
+            <td>{{x.reviews}}</td>
+            <td>{{x.ratings}}</td>
+            <td>{{x.date_time}}</td>
+
+
+
+        </tr>
+    {% endfor %}
+    </tbody>
+
+
+</table>
+</div>
+
+
+
+
+
+<br><br>
+
+
+{% include "footer.html" %}

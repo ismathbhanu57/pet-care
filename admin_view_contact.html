@@ -1,0 +1,51 @@
+
+{% load static %}
+{% include "admin_header.html" %}
+
+    <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Contacts</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+       <tr class="table-primary">
+           <th>Name</th>
+           <th>Email</th>
+           <th>Subjects</th>
+           <th>Messages</th>
+
+
+       </tr>
+    </thead>
+    <tbody>
+     {% for x in contact %}
+        <tr>
+            <td>{{x.name}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.subject}}</td>
+            <td>{{x.message}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+
+
+
+
+</table>
+</div>
+
+
+
+
+
+
+{% include "footer.html" %}

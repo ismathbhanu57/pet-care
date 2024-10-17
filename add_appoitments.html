@@ -1,0 +1,74 @@
+
+
+{% load static %}
+{% include "customer_header.html" %}
+
+  <!--================ Hero sm Banner start =================-->
+  <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Book Appoitments</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->
+
+
+
+  <!-- ================ contact section start ================= -->
+  <section class="section-margin--large">
+    <div class="container">
+        <div class="col-md-8 col-lg-9">
+                            <div style="color:red">{{msg}}</div>
+          <form action="" class="form-contact contact_form"  method="post" id="contactForm" >
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-lg-5">
+                <div class="form-group">
+                  Doctors Email
+                  <input class="form-control" name="doctor_email" id="doctor_email" type="email" value="{{doctors.email}}" required readonly placeholder="Doctor Email">
+                </div>
+
+                <div class="form-group">
+                  Customers Email
+                  <input class="form-control" name="customer_email" id="customer_email" type="email" value="{{email}}" required readonly placeholder="Customer Email">
+                </div>
+
+                 <div class="form-group">
+                   Pet Name
+                  <input class="form-control" name="select_pet" id="select_pet" type="text" placeholder="Pet Name" required>
+                 </div>
+
+                <div class="form-group">
+                  Reason
+                  <input class="form-control" name="reason" id="reason" type="text" placeholder="Reason" required>
+                 </div>
+
+                <div class="form-group">
+                  Appoitments Date Time
+                  <input class="form-control" name="appoitments_date_time" id="appointments_date_time" type="datetime-local" placeholder="appoitments_date_time">
+                 </div>
+
+                <div class="form-group text-center text-md-left mt-3">
+                  <button type="submit" class="button button-contactForm">Book Appoitments</button>
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+  </section>
+
+<script>
+    // JavaScript to set the minimum date and time for the appointment field
+    const dateTimeInput = document.getElementById('appointments_date_time');
+    const currentDateTime = new Date().toISOString().slice(0, 16); // Get current date and time in 'YYYY-MM-DDTHH:mm' format
+    dateTimeInput.min = currentDateTime; // Set the min attribute to the current date and time
+</script>
+	<!-- ================ contact section end ================= -->
+{% include "footer.html" %}
+
+

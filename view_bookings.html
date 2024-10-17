@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% load static %}
+{% include "doctor_header.html" %}
+
+    <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>View Bookings</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+       <tr>
+           <th>Doctor Email</th>
+           <th>Customer Email</th>
+           <th>Selected Pet</th>
+           <th>Doctor Cost</th>
+           <th>Discount</th>
+           <th>Reason</th>
+           <th>Date Time</th>
+
+           <th>Status</th>
+       </tr>
+    </thead>
+
+    <tbody>
+    {% for x in book %}
+        <tr>
+            <td>{{x.doctor_email}}</td>
+            <td>{{x.customer_email}}</td>
+            <td>{{x.select_pet}}</td>
+            <td>{{x.doctor_cost}}</td>
+            <td>{{x.discount}}</td>
+            <td>{{x.reason}}</td>
+            <td>{{x.date_time}}</td>
+
+             <td>
+                {% if x.book == 'pending' %}
+                    <a href="{% url 'accept_bookings' id=x.id %}" class="btn btn-success">Accept</a> <br><br>
+                    <a class="btn btn-danger" href="{% url 'reject_bookings' id=x.id %}">Reject</a>
+                {% elif x.book == 'Accepted' %}
+                    <a href="{% url 'send_prescription' id=x.id %}" class="btn btn-primary">Send Prescription</a>
+                {% else %}
+                    <button class="btn btn-danger" disabled="disabled">Rejected</button>
+                {% endif %}
+            </td>
+
+
+
+
+        </tr>
+    {% endfor %}
+    </tbody>
+
+
+
+
+
+</table>
+</div>
+
+
+
+
+
+
+
+
+
+{% include "footer.html" %}

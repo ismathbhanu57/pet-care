@@ -1,0 +1,85 @@
+
+{% load static %}
+{% include "customer_header.html" %}
+<section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>My Pets</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+
+       <tr class="table-primary">
+
+           <th>Name</th>
+           <th>Type</th>
+           <th>Breed</th>
+           <th>Age</th>
+           <th>gender</th>
+           <th>Weight</th>
+           <th>Height</th>
+           <th>Color</th>
+           <th>Owner</th>
+           <th>Description</th>
+           <th>Sells For</th>
+           <th>Image</th>
+           <th>Edit</th>
+           <th>Delete</th>
+           <th>Likes</th>
+           <th>Sale / Not</th>
+       </tr>
+    </thead>
+
+    <tbody>
+    {% for x in pets %}
+
+        <tr>
+            <td>{{x.name}}</td>
+            <td>{{x.type}}</td>
+            <td>{{x.breed}}</td>
+            <td>{{x.age}}</td>
+            <td>{{x.gender}}</td>
+            <td>{{x.weight}}</td>
+            <td>{{x.height}}</td>
+            <td>{{x.color}}</td>
+            <td>{{x.owner}}</td>
+            <td>{{x.description}}</td>
+            <td>{{x.sell_for}}</td>
+            <td><img src="{{x.image.url}}" height="100px" width="100px"></td>
+            <td>
+                  <a href="{% url 'pet_edit' id=x.id %}" onclick="return confirm('Really Do You Want To Edit?')">Edit</a></td>
+            <td>
+                  <a href="{% url 'delete_view_pet' id=x.id %}" onclick="return confirm('Really Do You Want To Delete?')">Delete</a></td>
+
+            <td><a href="{% url 'view_pets_likes' id=x.id %}" style="color:red">Likes</a></td>
+<td>
+    {% if x.sell_for == 'Yes' %}
+        <a href="{% url 'toggle_sell_status' x.id %}" class="button">Mark as Not for Sale</a>
+    <a href="{% url 'view_pets_requests' id=x.id %}">Requests</a>
+    {% else %}
+        <a href="{% url 'toggle_sell_status' x.id %}" class="button">Mark as For Sale</a>
+    {% endif %}
+</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+
+
+
+
+
+</table>
+</div>
+<br>
+{% include "footer.html" %}
+
+

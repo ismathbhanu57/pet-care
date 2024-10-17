@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% load static %}
+{% include "doctor_header.html" %}
+
+   <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>My Appoitments</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+
+
+
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+       <tr>
+           <th>Id</th>
+           <th>Doctors Email</th>
+           <th>Customer Email</th>
+           <th>Pets Name</th>
+           <th>Reason</th>
+           <th>Bookings Date&time</th>
+           <th>Appoitments Date&time</th>
+           <th>Status</th>
+       </tr>
+    </thead>
+
+    <tbody>
+    {% for x in appoitments %}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.doctor_email}}</td>
+            <td>{{x.customer_email}}</td>
+            <td>{{x.select_pet}}</td>
+            <td>{{x.reason}}</td>
+            <td>{{x.bookings_date_time}}</td>
+            <td>{{x.appoitments_date_time}}</td>
+            <td>{% if x.status == 'Pending' %}
+              <a href="{% url 'accept_appoitments' id=x.id %}" class="btn btn-success" >Accept</a>
+              <a class="btn btn-danger" href="{% url 'reject_appoitments' id=x.id %}">Reject</a>
+              {% elif x.status == 'Accepted' %}
+              <a href="{% url 'add_prescriptions' id=x.id %}" class="btn btn-success" >Submit Prescriptions</a>
+              {% else %}
+              <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Rejected</button>
+              {% endif %}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+</div>
+<section class="section-margin">
+
+
+    <div class="container">
+
+    </div>
+
+</section>
+
+
+
+
+
+
+{% include "footer.html" %}
+

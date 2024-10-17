@@ -1,0 +1,80 @@
+
+
+{% load static %}
+{% include "customer_header.html" %}
+
+  <!--================ Hero sm Banner start =================-->
+  <section class="hero-banner hero-banner--sm">
+    <div class="hero-banner__content text-center">
+      <h1>Add Comments</h1>
+      <nav aria-label="breadcrumb" class="banner-breadcrumb">
+
+      </nav>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->
+
+
+
+  <!-- ================ contact section start ================= -->
+  <section class="section-margin--large">
+    <div class="container">
+        <div class="col-md-8 col-lg-9">
+                            <div style="color:red">{{msg}}</div>
+          <form action="" class="form-contact contact_form"  method="post" id="contactForm" >
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-lg-5">
+                <div class="form-group">
+                  Posts Id
+                  <input class="form-control" name="posts" id="posts" type="number" value="{{posts.id}}" required readonly placeholder="Posts Id">
+                </div>
+
+                <div class="form-group">
+                  Customers Email
+                  <input class="form-control" name="customer_email" id="customer_email" type="email" value="{{email}}" required readonly placeholder="Customer Email">
+                </div>
+
+                 <div class="form-group">
+                   Comments
+                  <input class="form-control" name="comments" id="comments" type="text" placeholder="Comments" required>
+                 </div>
+
+                <div class="form-group text-center text-md-left mt-3">
+                  <button type="submit" class="button button-contactForm">Add Comments</button>
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+  </section>
+     <center> <h1>View Comments</h1></center>
+<div class="m-3">
+<table  class="table table-bordered">
+    <thead>
+       <tr class="table-primary">
+           <th>Id</th>
+
+           <th>Email</th>
+           <th>Comments</th>
+          <th>Date&Time</th>
+       </tr>
+    </thead>
+    <tbody>
+    {% for x in comments %}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.customer_email}}</td>
+            <td>{{x.comments}}</td>
+            <td>{{x.date_time}}</td>
+            </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+	<!-- ================ contact section end ================= -->
+{% include "footer.html" %}
+
